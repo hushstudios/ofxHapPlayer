@@ -110,6 +110,10 @@ public:
      */
     int                         getTimeout() const;
     void                        setTimeout(int microseconds);
+
+    // making this pblic so we can tie to multi window
+    void update( ofEventArgs &args );
+
 private:
     virtual void    foundMovie(int64_t duration) override;
     virtual void    foundStream(AVStream *stream) override;
@@ -124,7 +128,7 @@ private:
     void            setVideoPTSLoaded(int64_t pts, bool round_up);
     void            setPTSLoaded(int64_t pts);
     void            setPositionLoaded(float pct);
-    void            update(ofEventArgs& args);
+
     void            updatePTS();
     void            read(ofxHap::TimeRangeSequence& sequence);
     class AudioOutput : public ofBaseSoundOutput {
