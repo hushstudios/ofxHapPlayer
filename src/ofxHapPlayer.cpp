@@ -292,7 +292,7 @@ void ofxHapPlayer::error(int averror)
 
 void ofxHapPlayer::close()
 {
-    std::lock_guard<std::mutex> guard(_lock);
+    // std::lock_guard<std::mutex> guard(_lock);  // Causes deadlock when foundMovie() is called from the Demuxer.
     _demuxer.reset();
     _audioThread.reset();
     _audioOut.close();
